@@ -7,13 +7,15 @@
 
 
 
-.Card-Header {
-  position: absolute;
-  top: 50%;
+.cardWrapper {
+  /* position: absolute; */
+  /* top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 500px; */
   /* replace with desired width */
+  margin: 1rem 4rem;
+  width: 40rem;
 }
 
 .old-paper {
@@ -21,7 +23,7 @@
   background-repeat: repeat;
   filter: sepia(100%) contrast(120%) brightness(70%);
 
-  width: 500px;
+  /* width: 500px; */
   padding-top: 2%;
   padding-bottom: 3%;
   padding-left: 4%;
@@ -87,15 +89,13 @@
   z-index: 100;
 }
 
-.thumb {
-  position: absolute;
+/* .thumb {
+  position: relative;
   width: 50px;
   height: 50px;
-  left: 80px;
+} */
 
-}
-
-.face {
+/* .face {
   position: absolute;
   width: 180px;
   height: 130px;
@@ -103,4 +103,4 @@
   transform: rotate(10deg);
   filter: blur(0.1px);
   filter: grayscale(60%);
-}
+} */
