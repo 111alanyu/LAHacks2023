@@ -1,14 +1,11 @@
-const Card = () => {
+import './Card.css'
+
+const Card = (props) => {
   return (
-    <div id="card">
-        <div>
-          <b className="inputHeader">Name</b>
-          <input id="nameInput" placeholder="John"></input>
-        </div>
-        <div>
-          <b className="inputHeader">Hometown</b>
-          <input id="nameInput" placeholder="Los Angeles, CA"></input>
-        </div>
+    <div className='card'>
+      <p>Name: {props.name}</p>
+      <p>Hometown: {props.hometown}</p>
+      <p>Notes: {props.notes}</p>
     </div>
   )
 }

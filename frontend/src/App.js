@@ -15,7 +15,6 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/user/:id" element={<User />} />
-            
           </Routes>
         </Router>
     </div>
