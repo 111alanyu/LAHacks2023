@@ -1,4 +1,22 @@
+#profilePage h1 {
+    text-align: center;
+}
+
+#myInfo {
+  display: flex;
+  justify-content: center;
+}
+
+#myInfo > div {
+  margin: 1rem
+}
+#card {
+  width: 25rem;
+  height: 10rem;
+  background-color: yellow;
+}
+
 #collection {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }

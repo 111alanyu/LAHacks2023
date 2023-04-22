@@ -1,10 +1,12 @@
-
+import './login.css'
 
 const Login = () => {
   return (
     <div id="loginPage">
-      <h1>App Name</h1>
-      <button id="loginButton">Sign in with Google</button>
+      <div className="content">
+        <h1>QSL App</h1>
+        <button id="loginButton">Sign in with Google</button>
+      </div>
     </div>
   )
 }
