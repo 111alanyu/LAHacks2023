@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT');
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+English&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+
+
+
+.Card-Background {
+    background-color: rgb(246, 176, 56);
+}
+
+.Card-Header {
+    color: rgb(0, 0, 0);
+}
+
+.card {}
+
+.old-paper {
+    background-image: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
+    background-repeat: repeat;
+    filter: sepia(100%) contrast(120%) brightness(70%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 2%;
+
+
+    /* replace with desired width */
+}
+
+.old-text {
+    color: rgb(0, 13, 127);
+    font-family: 'Homemade Apple', cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    text-shadow: 1px 1px 1px #000000;
+
+}
