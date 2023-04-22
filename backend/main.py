@@ -21,4 +21,6 @@ def api_scan(username):
 # Same as above. Double redirect if not logged in.
 @app.route("/stats/<username>")
 def api_stats(username):
-    return f"{username}\'s stats"
+
+if __name__ == "__main__":
+    app.run(debug=True)
