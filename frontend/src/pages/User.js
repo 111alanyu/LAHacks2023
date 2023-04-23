@@ -14,6 +14,8 @@ const User = () => {
   const [userName, setUserName] = useState("")
   const [userHometown, setUserHometown] = useState("")
   const [userRemarks, setUserRemarks] = useState("")
+  const [userLong, setUserLong] = useState(0)
+  const [userLat, setUserLat] = useState(0)
 
   // Retrieve profile info when page loads
   useEffect(() => {
@@ -24,6 +26,8 @@ const User = () => {
           setUserName(doc.data().name);
           setUserHometown(doc.data().hometown);
           setUserRemarks(doc.data().remarks);
+          setUserLong(doc.data().long);
+          setUserLat(doc.data().lat);
         }
       });
     })
@@ -43,7 +47,7 @@ const User = () => {
     <div id="cardPage">
         <h1>You scanned a <span className='red'>[QSL App Name]</span> QR Code!</h1>
         <p>This person must scan yours back within 30 seconds to see the contents and add this card to your collection.</p>
-        <Card name={userName} hometown={userHometown} remarks={userRemarks}/>
+        <Card name={userName} hometown={userHometown} remarks={userRemarks} lat={userLat} long={userLong}/>
         <button onClick={addToCollection}>Add to collection</button>
     </div>
   )
