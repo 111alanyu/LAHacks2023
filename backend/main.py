@@ -16,29 +16,46 @@ cred = credentials.Certificate("fbtoken.json")
 fb_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+db.collection(u"qsl").add({
+    u"a": "mark",
+    u"b": "alan",
+    u"at": datetime.datetime.now().isoformat()
+})
 
-doc_ref = db.collection(u"users").add({
+db.collection(u"qsl").add({
+    u"a": "jenny",
+    u"b": "alan",
+    u"at": datetime.datetime.now().isoformat()
+})
+
+db.collection(u"qsl").add({
+    u"a": "david",
+    u"b": "alan",
+    u"at": datetime.datetime.now().isoformat()
+})
+
+db.collection(u"users").add({
     u"uid": "jenny",
     u"name": "Jenny",
     u"hometown": "San Diego, CA",
     u"remarks": "lorem ipsum dolor est"
 })
 
-doc_ref = db.collection(u"users").add({
+db.collection(u"users").add({
     u"uid": "alan",
     u"name": "Alan",
     u"hometown": "Los Angeles, CA",
     u"remarks": "lorem ipsum dolor est"
 })
 
-doc_ref = db.collection(u"users").add({
+db.collection(u"users").add({
     u"uid": "david",
     u"name": "David",
     u"hometown": "Mars",
     u"remarks": "lorem ipsum dolor est"
 })
 
-doc_ref = db.collection(u"users").add({
+db.collection(u"users").add({
     u"uid": "mark",
     u"name": "Mark",
     u"hometown": "Trinidad, CA",
