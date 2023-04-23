@@ -88,6 +88,7 @@ const Profile = () => {
       lat: latitude,
       long: longitude
     });
+    document.getElementById("saveMsg").style.display = "block";
   }
 
   return (
@@ -125,6 +126,7 @@ const Profile = () => {
           </header>
         </div>
         <button id='savebutton' onClick={updateProfile}>Save Card</button> 
+        <p id="saveMsg">Saved!</p>
       </div>
       <div id="qr-section">
         <p>This is your QR code. Print it out so people can scan it!</p>
