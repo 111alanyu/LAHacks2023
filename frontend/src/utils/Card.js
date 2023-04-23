@@ -1,60 +1,97 @@
 import './Card.css'
 import thumbtack from './thumbtack.png';
 import face from "./face.jpg"
+import React, { useState, useEffect } from "react";
 
+
+
+function Location() {
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      },
+      (error) => console.error(error)
+    );
+  }, []);
+
+  return (
+    [latitude, longitude]
+  );
+}
 
 function Card(props) {
-  
+  var loc = Location()
+  console.log(loc)
   return (
     // <div className="old-paper">
     //   <p>Name</p>
     // </div>
     <div className="cardWrapper">
+      <div className="old-paper">
 
-      {/* <div className='container'>
-        <img src={face} alt="My Image" className="face"></img>
-        <img src={thumbtack} alt="My Image" className="thumb"></img>
-      </div> */}
-      <header className="old-paper">
-        <br></br>
-        <div className="typed-text">
-          Name:
+        <div className="small_text">
+          <div className="left_text_col">
+            <br></br>
+
+            <div className="typed-text">
+              Name:
+            </div>
+            <div className="old-text">
+              {props.name}
+            </div>
+            <br></br>
+            <div className="typed-text">
+              Home-Town:
+            </div>
+            <div className="old-text">
+              {props.hometown}
+            </div>
+            <br></br>
+            <div className="typed-text">
+              Time-Met:
+            </div>
+            <div className="old-text">
+              15:15:23PST
+            </div>
+            <br></br>
+            <div className='text-container'>
+              <div className="typed-text">
+                Location:
+              </div>
+              <div className="old-text">
+                {loc[0]},{loc[1]}
+              </div>
+            </div>
+          </div>
+
+          <div className='container'>
+            <img src={face} alt="My Image" className="face"></img>
+            <img src={thumbtack} alt="My Image" className="thumb"></img>
+          </div>
+
+
+
         </div>
-        <div className="old-text">
-          {props.name}
+        <div className="large_text">
+          <div className="typed-text">
+            Remarks:
+          </div>
+          <div className="old-text">
+            <p>
+              {props.notes}
+            </p>
+          </div>
+
         </div>
-        <br></br>
-        <div className="typed-text">
-          Home-Town:
-        </div>
-        <div className="old-text">
-          {props.hometown}
-        </div>
-        <br></br>
-        <div className="typed-text">
-          Time-Met:
-        </div>
-        <div className="old-text">
-          15:15:23PST
-        </div>
-        <br></br>
-        <br></br>
-        <div className="typed-text">
-          Remarks:
-        </div>
-        <div className="old-text">
-          <p>
-            {props.notes}
-          </p>
-        </div>
-        <a
-          className="App-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
-      </header>
-    </div>
+
+
+      </div>
+    </div >
   );
 }
 
