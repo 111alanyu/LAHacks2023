@@ -11,11 +11,13 @@ const Profile = () => {
     {
       name: "p1",
       hometown: "Los Angeles, CA",
+      timemet: "12:43:23",
       notes: "insert bio"
     },
     {
       name: "p2",
       hometown: "Los Angefdsfsd, CA",
+      timemet: "12:43:23",
       notes: "insert bfdsfsdfsdio"
     },
   ]
