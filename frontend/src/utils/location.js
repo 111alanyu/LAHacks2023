@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 function Location() {
-    const [location, setLocation] = useState({});
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            setLocation({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-            });
-        });
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setLatitude(position.coords.latitude);
+                setLongitude(position.coords.longitude);
+            },
+            (error) => console.error(error)
+        );
     }, []);
 
     return (
-
-        <div>
-            <p>
-                Test
-            </p>
-            <p>Latitude: {location.latitude}</p>
-            <p>Longitude: {location.longitude}</p>
-        </div>
+        [latitude, longitude]
     );
 }
-
-export default Location;

@@ -1,16 +1,17 @@
 #profilePage h1 {
-    /* text-align: center; */
-    font-family: 'Special Elite', cursive;
-    font-size: 2.5rem;
-    color: var(--red);
+  /* text-align: center; */
+  font-family: 'Special Elite', cursive;
+  font-size: 2.5rem;
+  color: var(--red);
 }
 
-#profilePage input, #profilePage textarea  {
+#profilePage input,
+#profilePage textarea {
   border: none;
   background: none;
   width: 70%;
   outline: none;
-} 
+}
 
 #profilePage textarea {
   width: 100%;
@@ -28,7 +29,8 @@
   border-radius: 0.5rem;
 }
 
-#profilePage, #profilePage .section {
+#profilePage,
+#profilePage .section {
   display: flex;
   flex-direction: column;
   align-items: center;
