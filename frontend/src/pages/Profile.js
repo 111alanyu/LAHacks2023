@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import Card from '../utils/Card';
 import './profile.css'
 import QRCode from "react-qr-code";
+import { auth } from "../firebase-config"
+import { signOut } from 'firebase/auth';
 
 const Profile = () => {
-
+  
   const [collection, setCollection] = useState([]);
 
   const sampleCollection = [
