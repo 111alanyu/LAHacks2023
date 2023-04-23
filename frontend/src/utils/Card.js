@@ -4,29 +4,9 @@ import face from "./face.jpg"
 import React, { useState, useEffect } from "react";
 
 
-
-function Location() {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-      },
-      (error) => console.error(error)
-    );
-  }, []);
-
-  return (
-    [latitude, longitude]
-  );
-}
-
 function Card(props) {
-  var loc = Location()
-  console.log(loc)
+  // var loc = Location()
+  // console.log(loc)
   return (
     // <div className="old-paper">
     //   <p>Name</p>
@@ -64,7 +44,7 @@ function Card(props) {
                 Location:
               </div>
               <div className="old-text">
-                {loc[0]},{loc[1]}
+                {/* {loc[0]},{loc[1]} */}
               </div>
             </div>
           </div>

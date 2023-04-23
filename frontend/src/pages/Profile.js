@@ -3,25 +3,45 @@ import Card from '../utils/Card';
 import './profile.css'
 import QRCode from "react-qr-code";
 import { db, auth } from "../firebase-config"
-import { doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
+import { arrayUnion, doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
 import Map from '../utils/map';
 
+function Location() {
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      },
+      (error) => console.error(error)
+    );
+  }, []);
+
+  return (
+    [latitude, longitude]
+  );
+}
 
 const Profile = () => {
+
+  
 
   const [currUserUid, setCurrUserUid] = useState(null);
   const [connectionUids, setConnectionUids] = useState([]);
   const [connections, setConnections] = useState([]);
   const coords = [[0, 0], [-118.43, 34.07], [-118.44, 34.08]];
 
-
+  const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
   // useEffect(() => {
   //   setCurrUserUid(auth.currentUser.uid)
   // }, [auth.currentUser.uid])
 
   // Retrieve profile info when page loads
   useEffect(() => {
-    let docRef = doc(db, "users", auth.currentUser.uid);
+    let docRef = doc(db, "users", currUser);
     getDoc(docRef).then((doc) => {
       if (doc.exists()) {
         document.getElementById("nameInput").value = doc.data().name;
@@ -32,7 +52,7 @@ const Profile = () => {
         console.log("No such document!");
       }
     })
-  }, [auth.currentUser]);
+  }, [currUser]);
 
   useEffect(() => {
     console.log("dfsd");
@@ -47,7 +67,7 @@ const Profile = () => {
               {
                 name: doc.data().name,
                 hometown: doc.data().hometown,
-                remarks: doc.data().remarks
+                remarks: doc.data().remarks,
               }
             ]
           )
@@ -58,12 +78,14 @@ const Profile = () => {
     })
   }, [connectionUids])
 
+
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
-    await setDoc(doc(db, "users", auth.currentUser.uid), {
+    await setDoc(doc(db, "users", currUser), {
       name: document.getElementById("nameInput").value,
       hometown: document.getElementById("hometownInput").value,
       remarks: document.getElementById("remarksInput").value,
+      connections: arrayUnion(""),
     });
   }
 
@@ -107,7 +129,7 @@ const Profile = () => {
         <p>This is your QR code. Print it out and let people scan it!</p>
         <div>
           <div id="qr-code-caption">QSL App</div>
-          <QRCode value={`http://localhost:3000/user/${auth.currentUser.uid}`} size={180}/>
+          <QRCode value={`http://localhost:3000/user/${currUser}`} size={180}/>
         </div>
       </div>
       <div className='section' id="collectionSection">
