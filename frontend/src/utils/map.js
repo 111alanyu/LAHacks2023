@@ -30,7 +30,7 @@ const Map = (props) => {
             var dataSource = new atlas.source.DataSource();
             map.sources.add(dataSource);
             console.log("ass")
-            console.log(props)
+            // console.log(props)
             for (const coord of props.props) {
                 console.log("tits")
                 console.log(coord)

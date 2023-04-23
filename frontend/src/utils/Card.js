@@ -40,12 +40,12 @@ function Card(props) {
             </div>
             <br></br>
             <div className='text-container'>
-              <div className="typed-text">
-                Location:
-              </div>
-              <div className="old-text">
-                {/* {loc[0]},{loc[1]} */}
-              </div>
+                <div className="typed-text">
+                  Location:
+                </div>
+                <div className="old-text">
+                  {props.lat}, {props.long} 
+                </div>
             </div>
           </div>
 

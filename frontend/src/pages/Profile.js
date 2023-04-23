@@ -3,13 +3,26 @@ import Card from '../utils/Card';
 import './profile.css'
 import QRCode from "react-qr-code";
 import { db, auth } from "../firebase-config"
-import { arrayUnion, doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
+import { updateDoc,arrayUnion, doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
 import Map from '../utils/map';
 
-function Location() {
+const Profile = () => {
+
+  const [currUserUid, setCurrUserUid] = useState(null);
+  const [connectionUids, setConnectionUids] = useState([]);
+  const [connections, setConnections] = useState([]);
+  const [coords, setCoords] = useState([]);
+  // const coords = [];
+  // const coords = [[-118.43, 34.07]];
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
+  const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
+  // useEffect(() => {
+  //   setCurrUserUid(auth.currentUser.uid)
+  // }, [auth.currentUser.uid])
+
+  // Get location
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -20,24 +33,6 @@ function Location() {
     );
   }, []);
 
-  return (
-    [latitude, longitude]
-  );
-}
-
-const Profile = () => {
-
-  
-
-  const [currUserUid, setCurrUserUid] = useState(null);
-  const [connectionUids, setConnectionUids] = useState([]);
-  const [connections, setConnections] = useState([]);
-  const coords = [[0, 0], [-118.43, 34.07], [-118.44, 34.08]];
-
-  const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
-  // useEffect(() => {
-  //   setCurrUserUid(auth.currentUser.uid)
-  // }, [auth.currentUser.uid])
 
   // Retrieve profile info when page loads
   useEffect(() => {
@@ -55,8 +50,6 @@ const Profile = () => {
   }, [currUser]);
 
   useEffect(() => {
-    console.log("dfsd");
-    console.log(connectionUids);
     connectionUids.forEach((uid) => {
       let docRef = doc(db, "users", uid);
       getDoc(docRef).then((doc) => {
@@ -68,9 +61,11 @@ const Profile = () => {
                 name: doc.data().name,
                 hometown: doc.data().hometown,
                 remarks: doc.data().remarks,
+                lat: doc.data().lat,
+                long: doc.data().long,
               }
             ]
-          )
+          );
         } else {
           console.log("No such document!");
         }
@@ -78,14 +73,26 @@ const Profile = () => {
     })
   }, [connectionUids])
 
+  useEffect(() => {
+    connections.forEach((doc) => {
+      setCoords(
+        [
+          ...coords,
+          [doc.long, doc.lat]
+        ]
+      )
+    })
+  }, [connections])
+
 
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
-    await setDoc(doc(db, "users", currUser), {
+    await updateDoc(doc(db, "users", currUser), {
       name: document.getElementById("nameInput").value,
       hometown: document.getElementById("hometownInput").value,
       remarks: document.getElementById("remarksInput").value,
-      connections: arrayUnion(""),
+      lat: latitude,
+      long: longitude
     });
   }
 
@@ -138,13 +145,13 @@ const Profile = () => {
           <h1>my card collection</h1>
             {connections.map((user) => {
               return (
-                <Card name={user.name} hometown={user.hometown} remarks={user.remarks}/>
+                <Card name={user.name} hometown={user.hometown} remarks={user.remarks} lat={user.lat} long={user.long} location={true}/>
               )
             })}
           </div>
         </div>
       </div>
-      <Map props={coords} />
+      {(coords.length > 0) && <Map props={coords} />}
     </div>
   )
 }
