@@ -33,6 +33,8 @@ const Profile = () => {
   }, [auth.currentUser]);
 
   useEffect(() => {
+    console.log("dfsd");
+    console.log(connectionUids);
     connectionUids.forEach((uid) => {
       let docRef = doc(db, "users", uid);
       getDoc(docRef).then((doc) => {
