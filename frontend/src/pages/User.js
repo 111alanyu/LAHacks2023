@@ -4,6 +4,7 @@ import './user.css'
 import { useEffect, useState } from 'react';
 import { db, auth } from "../firebase-config"
 import { doc, setDoc, collection, getDocs, arrayUnion, updateDoc } from "firebase/firestore";
+import BlurImage from "../images/blur.jpeg"
 
 const User = () => {
   const user = useParams();
@@ -16,6 +17,21 @@ const User = () => {
   const [userRemarks, setUserRemarks] = useState("")
   const [userLong, setUserLong] = useState(0)
   const [userLat, setUserLat] = useState(0)
+  const [blur, setBlur] = useState(true);
+
+  function handleKeyPress(event) {
+    if (event.key === 'b') {
+      setBlur(false);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  });
 
   // Retrieve profile info when page loads
   useEffect(() => {
@@ -46,9 +62,23 @@ const User = () => {
   return (
     <div id="cardPage">
         <h1>You scanned a <span className='red'>Social Scan</span> QR Code!</h1>
-        <p>This person must scan yours back within 30 seconds to see the contents and add this card to your collection.</p>
-        <Card id="userCard" name={userName} hometown={userHometown} remarks={userRemarks} lat={userLat} long={userLong}/>
-        <button onClick={addToCollection}>Add to collection</button>
+        <p>This person must scan your code back between 1 and 5 minutes to see the contents and add this card to your collection.</p>
+        {blur ? (
+          <img src={BlurImage}/>
+        ):(
+          <div>
+            <Card id="userCard" name={userName} hometown={userHometown} remarks={userRemarks} lat={userLat} long={userLong}/>
+            
+          </div>
+        )}
+        {blur ? (
+          <div></div>
+        ):(
+          <div>
+            <button onClick={addToCollection}>Add to collection</button>
+          </div>
+        )}
+        
     </div>
   )
 }

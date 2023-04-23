@@ -15,8 +15,8 @@ const Profile = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
-  // const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
-  const currUser = auth.currentUser.uid;
+  const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
+  // const currUser = auth.currentUser.uid;
 
   // Get location
   useEffect(() => {
