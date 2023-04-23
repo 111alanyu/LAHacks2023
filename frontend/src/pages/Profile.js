@@ -86,7 +86,6 @@ const Profile = () => {
         </div>
       </div>
       <Map props={coords} />
-
     </div>
   )
 }
