@@ -4,13 +4,15 @@ import './profile.css'
 import QRCode from "react-qr-code";
 import { db, auth } from "../firebase-config"
 import { doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
-import firebase from 'firebase/app';
+import Map from '../utils/map';
+
 
 const Profile = () => {
 
   const [currUserUid, setCurrUserUid] = useState(null);
   const [connectionUids, setConnectionUids] = useState([]);
   const [connections, setConnections] = useState([]);
+  const coords = [[0, 0], [-118.43, 34.07], [-118.44, 34.08]];
 
 
   // useEffect(() => {
@@ -120,7 +122,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      
+      <Map props={coords} />
     </div>
   )
 }
