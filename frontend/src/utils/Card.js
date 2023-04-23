@@ -71,7 +71,7 @@ function Card(props) {
 
           <div className='container'>
             <img src={face} alt="My Image" className="face"></img>
-            <img src={thumbtack} alt="My Image" className="thumb"></img>
+
           </div>
 
 
