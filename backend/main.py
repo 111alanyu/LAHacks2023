@@ -12,6 +12,35 @@ cred = credentials.Certificate("fbtoken.json")
 fb_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+
+doc_ref = db.collection(u"users").add({
+    u"uid": "jenny",
+    u"name": "Jenny",
+    u"hometown": "San Diego, CA",
+    u"remarks": "lorem ipsum dolor est"
+})
+
+doc_ref = db.collection(u"users").add({
+    u"uid": "alan",
+    u"name": "Alan",
+    u"hometown": "Los Angeles, CA",
+    u"remarks": "lorem ipsum dolor est"
+})
+
+doc_ref = db.collection(u"users").add({
+    u"uid": "david",
+    u"name": "David",
+    u"hometown": "Mars",
+    u"remarks": "lorem ipsum dolor est"
+})
+
+doc_ref = db.collection(u"users").add({
+    u"uid": "mark",
+    u"name": "Mark",
+    u"hometown": "Trinidad, CA",
+    u"remarks": "???"
+})
+
 partial_timeout = datetime.timedelta(seconds = 30)
 
 def is_qsl(a_uid, b_uid):
@@ -30,7 +59,7 @@ def clean_expired_partials():
     for i in range(len(partial_qsl)):
         d = partial_exp[i]
         if partial_timeout <= datetime.datetime.now():
-            pass
+            pass # TODO
 
 
 partial_qsl = [] # list of tuples
@@ -132,15 +161,17 @@ def api_scan(other_uid):
             "ttl":  partial_timeout.seconds
         }
 
-
-
-
-@app.route("/stats/<uid>")
-def api_stats(uid):
+@app.route("/data/<uid>")
+def api_data(uid):
     qsl_ref = db.collection(u'qsl')
     a = qsl_ref.where(u'a', u'==', uid).stream()
     b = qsl_ref.where(u'b', u'==', uid).stream()
-
     l = list(a) + list(b)
-    return [x.to_dict() for x in l]
 
+    qsl_ref = db.collection(u'users')
+    a = qsl_ref.where(u'uid', u'==', uid).stream()
+
+    d = next(a).to_dict()
+    d["qsl"] = [x.to_dict() for x in l]
+
+    return d
