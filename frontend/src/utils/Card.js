@@ -44,15 +44,9 @@ function Card(props) {
         </div>
         <div className="old-text">
           <p>
-            {props.notes}
+            {props.remarks}
           </p>
         </div>
-        <a
-          className="App-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
       </header>
     </div>
   );

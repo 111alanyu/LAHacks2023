@@ -11,7 +11,7 @@ const Login = ({ isAuth, setIsAuth }) => {
   // If user is already logged in, redirect to Home
   useEffect(() => {
     if (isAuth) {
-      navigate("/home");
+      navigate("/profile");
     } 
   }, []);
 
