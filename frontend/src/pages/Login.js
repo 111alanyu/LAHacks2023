@@ -27,7 +27,7 @@ const Login = ({ isAuth, setIsAuth }) => {
   return (
     <div id="loginPage">
       <div className="content">
-        <h1>QSL App</h1>
+        <h1>Social Scan</h1>
         <button id="loginButton" onClick={signInWithGoogle}>Sign in with Google</button>
       </div>
     </div>

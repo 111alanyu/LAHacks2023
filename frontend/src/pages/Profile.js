@@ -17,7 +17,8 @@ const Profile = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
-  const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
+  // const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
+  const currUser = auth.currentUser.uid;
   // useEffect(() => {
   //   setCurrUserUid(auth.currentUser.uid)
   // }, [auth.currentUser.uid])
@@ -133,9 +134,9 @@ const Profile = () => {
         <button id='savebutton' onClick={updateProfile}>Save Card</button> 
       </div>
       <div id="qr-section">
-        <p>This is your QR code. Print it out and let people scan it!</p>
+        <p>This is your QR code. Print it out so people can scan it!</p>
         <div>
-          <div id="qr-code-caption">QSL App</div>
+          <div id="qr-code-caption">Social Scan</div>
           <QRCode value={`http://localhost:3000/user/${currUser}`} size={180}/>
         </div>
       </div>
