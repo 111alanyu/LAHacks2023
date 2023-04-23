@@ -19,9 +19,6 @@ const Profile = () => {
 
   // const currUser = "aV8UDZqUFZOd6yd2SGCtM80xLrG3";
   const currUser = auth.currentUser.uid;
-  // useEffect(() => {
-  //   setCurrUserUid(auth.currentUser.uid)
-  // }, [auth.currentUser.uid])
 
   // Get location
   useEffect(() => {
@@ -48,7 +45,7 @@ const Profile = () => {
         console.log("No such document!");
       }
     })
-  }, [currUser]);
+  }, [auth.currentUser.uid]);
 
   useEffect(() => {
     connectionUids.forEach((uid) => {
