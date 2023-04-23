@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import Card from '../utils/Card';
 import './profile.css'
 import QRCode from "react-qr-code";
+import Map from '../utils/map';
 
 const Profile = () => {
 
   const [collection, setCollection] = useState([]);
+  const coords = [[0, 0], [-118.43, 34.07], [-118.44, 34.08]];
 
   const sampleCollection = [
     {
@@ -62,28 +64,29 @@ const Profile = () => {
             </a>
           </header>
         </div>
-        <button id='savebutton'>Save Card</button> 
+        <button id='savebutton'>Save Card</button>
       </div>
       <div id="qr-section">
         <p>This is your QR code. Print it out and let people scan it!</p>
         <div>
           <div id="qr-code-caption">QSL App</div>
-          <QRCode value="localhost:3000/users/insertMyUID" size={180}/>
+          <QRCode value="localhost:3000/users/insertMyUID" size={180} />
         </div>
       </div>
       <div className='section' id="collectionSection">
         <div id="collectionWrapper">
           <div id="collection">
-          <h1>my card collection</h1>
+            <h1>my card collection</h1>
             {collection.map((user) => {
               return (
-                <Card name={user.name} hometown={user.hometown} notes={user.notes}/>
+                <Card name={user.name} hometown={user.hometown} notes={user.notes} />
               )
             })}
           </div>
         </div>
       </div>
-      
+      <Map props={coords} />
+
     </div>
   )
 }
