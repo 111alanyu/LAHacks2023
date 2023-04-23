@@ -1,12 +1,16 @@
 from flask import Flask
 from flask import request
+from flask_cors import CORS, cross_origin
 import datetime
-
-app = Flask(__name__)
-
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
+
+app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+
 
 cred = credentials.Certificate("fbtoken.json")
 fb_app = firebase_admin.initialize_app(cred)
@@ -68,11 +72,13 @@ partial_exp = [] # list of datetimes
 # Should redirect to /login if not logged in,
 # and to /stats if logged in
 @app.route("/")
+@cross_origin()
 def api_index():
     return "index"
 
 
 @app.route("/get_partial_timeout/<other_uid>")
+@cross_origin()
 def api_partial_timeout(other_uid):
     self_uid = "knuth" if other_uid == "mark" else "mark"
     # request.headers.get('your-header-name')
@@ -105,6 +111,7 @@ def api_partial_timeout(other_uid):
 
 
 @app.route("/scan/<other_uid>")
+@cross_origin()
 def api_scan(other_uid):
 
     self_uid = "knuth" if other_uid == "mark" else "mark"
@@ -162,6 +169,7 @@ def api_scan(other_uid):
         }
 
 @app.route("/data/<uid>")
+@cross_origin()
 def api_data(uid):
     qsl_ref = db.collection(u'qsl')
     a = qsl_ref.where(u'a', u'==', uid).stream()
