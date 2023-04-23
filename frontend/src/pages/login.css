@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Old+Standard+TT&display=swap');
 
+:root {
+  --red: rgb(172, 56, 56);
+}
+
 #loginPage h1 {
   font-family: 'Old Standard TT', serif;
   font-size: 5rem;
 }
 
 #loginPage button {
-  font-family: 'IM Fell English', serif;
+  font-family: 'Special Elite', cursive;
   font-size: 1.5rem;
   border: none;
   padding: 0.5rem 0rem;

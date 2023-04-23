@@ -26,43 +26,62 @@ const Profile = () => {
 
   return (
     <div id="profilePage">
-        <div id="myCard">
-          <div id="myInfo">
-            <div id="updateProfile">
-              <h1>My Card</h1>
-              <div id="card">
-                <div>
-                  <b className="inputHeader">Name</b>
-                  <input id="nameInput" placeholder="John"></input>
-                </div>
-                <div>
-                  <b className="inputHeader">Hometown</b>
-                  <input id="nameInput" placeholder="Los Angeles, CA"></input>
-                </div>
-                <div>
-                  <b className="inputHeader">Notes</b>
-                  <input id="nameInput" placeholder="About me"></input>
-                </div>
-              </div>
-              <button id='savebutton'>Save Card</button> 
-            </div>
-              <div id="qr-code">
-                <h1>My QR Code</h1>
-                <QRCode value="localhost:3000/users/insertMyUID" size={180}/>
-              </div>
-          </div>
+      <div className='section'>
+        <div id='collectionWrapper'>
+          <h1>my card</h1>
         </div>
-        
+        <div className="cardWrapper">
+          {/* <div className='container'>
+            <img src={face} alt="My Image" className="face"></img>
+            <img src={thumbtack} alt="My Image" className="thumb"></img>
+          </div> */}
+          <header className="old-paper">
+            <br></br>
+            <div className="typed-text">
+              Name:
+            </div>
+            <input id="nameInput" className="old-text" placeholder="(insert name)"></input>
+            <br></br>
+            <div className="typed-text">
+              Home-Town:
+            </div>
+            <input id="nameInput" className="old-text" placeholder="(insert hometown)"></input>
+            <br></br>
+            <div className="typed-text">
+              Remarks:
+            </div>
+            <br></br>
+            <textarea className="old-text" placeholder='(insert about-me)'></textarea>
+            <a
+              className="App-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+            </a>
+          </header>
+        </div>
+        <button id='savebutton'>Save Card</button> 
+      </div>
+      <div id="qr-section">
+        <p>This is your QR code. Print it out and let people scan it!</p>
+        <div>
+          <div id="qr-code-caption">QSL App</div>
+          <QRCode value="localhost:3000/users/insertMyUID" size={180}/>
+        </div>
+      </div>
+      <div className='section' id="collectionSection">
         <div id="collectionWrapper">
-          <h1>My Card Collection</h1>
           <div id="collection">
+          <h1>my card collection</h1>
             {collection.map((user) => {
               return (
                 <Card name={user.name} hometown={user.hometown} notes={user.notes}/>
               )
             })}
+          </div>
         </div>
-        </div>
+      </div>
+      
     </div>
   )
 }
