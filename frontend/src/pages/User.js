@@ -47,7 +47,7 @@ const User = () => {
     <div id="cardPage">
         <h1>You scanned a <span className='red'>Social Scan</span> QR Code!</h1>
         <p>This person must scan yours back within 30 seconds to see the contents and add this card to your collection.</p>
-        <Card name={userName} hometown={userHometown} remarks={userRemarks} lat={userLat} long={userLong}/>
+        <Card id="userCard" name={userName} hometown={userHometown} remarks={userRemarks} lat={userLat} long={userLong}/>
         <button onClick={addToCollection}>Add to collection</button>
     </div>
   )

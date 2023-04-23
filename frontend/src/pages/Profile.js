@@ -3,7 +3,7 @@ import Card from '../utils/Card';
 import './profile.css'
 import QRCode from "react-qr-code";
 import { db, auth } from "../firebase-config"
-import { updateDoc,arrayUnion, doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
+import { updateDoc, arrayUnion, doc, setDoc, collection, getDocs, getDoc } from "firebase/firestore";
 import Map from '../utils/map';
 
 const Profile = () => {
@@ -12,8 +12,6 @@ const Profile = () => {
   const [connectionUids, setConnectionUids] = useState([]);
   const [connections, setConnections] = useState([]);
   const [coords, setCoords] = useState([]);
-  // const coords = [];
-  // const coords = [[-118.43, 34.07]];
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
@@ -45,25 +43,23 @@ const Profile = () => {
         console.log("No such document!");
       }
     })
-  }, [auth.currentUser.uid]);
+  }, [currUser]);
 
   useEffect(() => {
     connectionUids.forEach((uid) => {
       let docRef = doc(db, "users", uid);
       getDoc(docRef).then((doc) => {
         if (doc.exists()) {
-          setConnections(
-            [
-              ...connections, 
-              {
-                name: doc.data().name,
-                hometown: doc.data().hometown,
-                remarks: doc.data().remarks,
-                lat: doc.data().lat,
-                long: doc.data().long,
-              }
-            ]
-          );
+          setConnections(prevConnections => [
+            ...prevConnections, 
+            {
+              name: doc.data().name,
+              hometown: doc.data().hometown,
+              remarks: doc.data().remarks,
+              lat: doc.data().lat,
+              long: doc.data().long,
+            }
+          ]);
         } else {
           console.log("No such document!");
         }
@@ -143,7 +139,10 @@ const Profile = () => {
           <h1>my card collection</h1>
             {connections.map((user) => {
               return (
-                <Card name={user.name} hometown={user.hometown} remarks={user.remarks} lat={user.lat} long={user.long} location={true}/>
+                <div>
+                  <Card name={user.name} hometown={user.hometown} remarks={user.remarks} lat={user.lat} long={user.long} location={true}/>
+                  <br/>
+                </div>
               )
             })}
           </div>
