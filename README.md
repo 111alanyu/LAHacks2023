@@ -51,5 +51,5 @@ Secondly, we learned about Azure Maps, a powerful mapping platform from Microsof
 
 Thirdly, we learned about React, a popular JavaScript library for building user interfaces. We had to learn how to use React to build components, manage state, and handle events. We learned about the different React lifecycle methods and how to use them effectively. We also learned about React Router, a tool for managing navigation in a React application.
 
-## 📲What's next for Social Scan
+## 📲 What's next for Social Scan
 Right now, Social Scan is a web application, so we want to make Social Scan into a mobile app so it would be more convenient for users since they would probably be scanning the QR codes on their phones. We also want to add features that displays statistics about the people that users are connecting with.
