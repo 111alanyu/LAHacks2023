@@ -41,6 +41,3 @@ Thirdly, we learned about React, a popular JavaScript library for building user 
 
 ## 📲What's next for Social Scan
 Right now, Social Scan is a web application, so we want to make Social Scan into a mobile app so it would be more convenient for users since they would probably be scanning the QR codes on their phones. We also want to add features that displays statistics about the people that users are connecting with.
-
-##  Built With
-This was built with React.js, Firebase, and Microsoft Azure Maps.
