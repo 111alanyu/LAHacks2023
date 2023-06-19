@@ -5,11 +5,23 @@
 Meeting new people can be challenging, especially when it's hard to even approach people in the first place. Additionally travelers on the go, especially solo travelers, might want to meet new people and form new connections, so what better to do that than to approach random strangers?
 
 ## 👥 What it does
-Social Scan is based off of QSL cards, which, during the early days of radio broadcasting, are written confirmations of communication between two radio stations. Social Scan focuses on forming connections with strangers or just people you aren’t as familiar with through in-person conversations. To use it, you can log in to the app, where you can customize your own QSL card that will be shown to other people. You’ll also get your own QR code that you can print out and put on things like your keychains as an invitation for other people using the app to talk to you and scan your code.
+<img src="screenshots/qsl.png" width="60%">
+
+Social Scan is based off of QSL cards, which, during the early days of radio broadcasting, are written confirmations of communication between two radio stations. Social Scan focuses on forming connections with strangers or just people you aren’t as familiar with through in-person conversations.
+
+<img src="screenshots/profile.png" width="70%">
+
+ To use it, you can log in to the app, where you can customize your own QSL card that will be shown to other people. You’ll also get your own QR code that you can print out and put on things like your keychains as an invitation for other people using the app to talk to you and scan your code.
+
+<img src="screenshots/scan.png" width="70%">
 
 When you find someone in the wild with a Social Scan QR code, you can scan it, but to view their QSL card and add it to your collection, they need to scan your card within 1-5 minutes of you doing it. This is to ensure that there is a mutual connection going on and the 1 minute minimum time frame is to force you and that person to either talk to each other a little or (awkwardly stand there).
 
+<img src="screenshots/collection.png" width="70%">
+
 In your profile page, you can view your card collection of all of the people you’ve met, as well as the location where you met them on a map so you can visualize your interactions, especially if you like to travel.
+
+<img src="screenshots/map.png" width="70%">
 
 Overall, Social Scan aims to make forming spontaneous connections into a fun game and we hope that it’ll encourage people to break out of their comfort zone.
 
