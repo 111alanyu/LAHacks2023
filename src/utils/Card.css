@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT');
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+English&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+
+
+
+.cardWrapper {
+  /* position: absolute; */
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; */
+  /* replace with desired width */
+  margin: 1rem 4rem;
+  width: 40rem;
+}
+
+.old-paper {
+  background-image: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
+  background-repeat: repeat;
+  filter: sepia(100%) contrast(120%) brightness(70%);
+
+  /* width: 500px; */
+  padding-top: 2%;
+  padding-bottom: 3%;
+  padding-left: 4%;
+  padding-right: 4%;
+  border-radius: 2;
+  border-radius: 1%;
+  /* replace with desired width */
+}
+
+
+
+.typed-text {
+  font-family: 'Special Elite', cursive;
+  font-size: 24px;
+  padding-right: 2%;
+}
+
+.old-text {
+  color: rgb(0, 13, 127);
+  font-family: 'Homemade Apple', cursive;
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  text-shadow: 1px 1px 1px #000000;
+  text-decoration: underline;
+
+}
+
+.old-text,
+.typed-text {
+  display: inline-block;
+  vertical-align: left;
+  /* Display the words as inline-block elements */
+}
+
+.text-container {
+  display: flex;
+}
+
+.paper-clip {
+  width: 60px;
+  height: 40px;
+  border-top: 3px solid #999;
+  border-left: 3px solid #999;
+  border-right: 3px solid #bbb;
+  border-bottom: 3px solid #bbb;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-clip::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ddd;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+
+.container {
+  all: unset;
+  position: relative;
+  filter: none;
+  z-index: 100000;
+}
+
+
+.container img:first-child {
+  all: unset;
+  z-index: 1;
+  width: 180px;
+  height: 130px;
+  transform: rotate(5deg);
+  z-index: 100;
+  filter: none;
+
+}
+
+
+
+.small_text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left_text_col {}
+
+
+.loc {}
